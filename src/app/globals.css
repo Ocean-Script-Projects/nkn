@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+:root {
+  /* NKN palette */
+  --background: #f7f4ee; /* ivory */
+  --foreground: #1b1b1a; /* graphite */
+  --muted: rgba(27, 27, 26, 0.72);
+  --muted2: rgba(27, 27, 26, 0.55);
+  --border: rgba(27, 27, 26, 0.12);
+  --surface: rgba(255, 255, 255, 0.44);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+
+  --color-ivory: #f7f4ee;
+  --color-graphite: #1b1b1a;
+  --color-brass: #c7a76a;
+  --color-redSignature: #b1002e;
+}
+
+/* Intentionally no dark mode for now — the brand is “paper/ivory editorial”.
+   Avoids low-contrast text when OS is in dark mode. */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+@layer utilities {
+  .paper-grain {
+    background-image: radial-gradient(
+        circle at 20% 20%,
+        rgba(0, 0, 0, 0.035),
+        transparent 55%
+      ),
+      radial-gradient(
+        circle at 80% 40%,
+        rgba(0, 0, 0, 0.02),
+        transparent 60%
+      ),
+      radial-gradient(
+        circle at 30% 80%,
+        rgba(0, 0, 0, 0.025),
+        transparent 55%
+      );
+    background-blend-mode: multiply;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes heroGrain {
+  0% {
+    transform: translate3d(-6%, -4%, 0);
+  }
+  20% {
+    transform: translate3d(-2%, -8%, 0);
+  }
+  40% {
+    transform: translate3d(-8%, -2%, 0);
+  }
+  60% {
+    transform: translate3d(-3%, -6%, 0);
+  }
+  80% {
+    transform: translate3d(-7%, -3%, 0);
+  }
+  100% {
+    transform: translate3d(-6%, -4%, 0);
+  }
+}
+
+@keyframes wordRise {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+
+@keyframes lineDraw {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}

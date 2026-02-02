@@ -1,0 +1,21 @@
+<svg width="1200" height="1500" viewBox="0 0 1200 1500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1200" y2="1500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7F4EE"/>
+      <stop offset="1" stop-color="#EEE7DB"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1500" fill="url(#g)"/>
+  <rect x="300" y="260" width="600" height="980" rx="24" fill="#1B1B1A" fill-opacity="0.06" stroke="#1B1B1A" stroke-opacity="0.10"/>
+  <path d="M380 520C480 440 540 390 600 390C660 390 720 440 820 520" stroke="#1B1B1A" stroke-opacity="0.20" stroke-width="2"/>
+  <path d="M430 640C470 700 540 740 600 740C660 740 730 700 770 640" stroke="#C7A76A" stroke-opacity="0.45" stroke-width="2"/>
+  <path d="M430 920C480 980 540 1010 600 1010C660 1010 720 980 770 920" stroke="#1B1B1A" stroke-opacity="0.16" stroke-width="2"/>
+  <circle cx="980" cy="1320" r="6" fill="#B1002E"/>
+  <text x="80" y="140" fill="#1B1B1A" fill-opacity="0.65" font-family="ui-sans-serif, system-ui" font-size="18" letter-spacing="0.22em">
+    PLACEHOLDER PIECE
+  </text>
+  <text x="80" y="170" fill="#1B1B1A" fill-opacity="0.5" font-family="ui-sans-serif, system-ui" font-size="14" letter-spacing="0.18em">
+    NKN · 4:5 · replace later
+  </text>
+</svg>
+

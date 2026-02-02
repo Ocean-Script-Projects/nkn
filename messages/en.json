@@ -1,0 +1,44 @@
+{
+  "meta": {
+    "title": "NKN — Atelier",
+    "description": "Bespoke tailoring, one-of-one pieces, upcycling."
+  },
+  "nav": {
+    "services": "Services",
+    "pieces": "Pieces",
+    "upcycling": "Upcycling",
+    "events": "Events",
+    "about": "About",
+    "contact": "Contact",
+    "request": "Request"
+  },
+  "home": {
+    "heroKicker": "Natalia Khreshkova · NKN",
+    "heroTitle": "Bespoke tailoring & atelier pieces",
+    "heroSubtitle": "Handmade. Precise. Inspired by nature.",
+    "heroCtaPrimary": "Request a piece",
+    "heroCtaSecondary": "View pieces",
+    "heroCaption": "atelier / Hamburg",
+
+    "approachTitle": "Approach",
+    "approachItems": {
+      "oneTitle": "I read the person",
+      "oneBody": "Not only measurements — but how someone lives, moves, and shows up.",
+      "twoTitle": "I translate into form",
+      "twoBody": "Deep understanding + professional construction creates a recognizable result.",
+      "threeTitle": "A piece you recognize",
+      "threeBody": "It’s not something you just “try on”. You recognize it — because it matches you.",
+      "fourTitle": "Confidence as a tool",
+      "fourBody": "I create clothing as an instrument of confidence and inner state."
+    },
+
+    "servicesTitle": "What I create",
+    "piecesTitle": "Signature pieces",
+    "upcyclingTitle": "Upcycling",
+    "printsTitle": "Custom prints",
+    "b2bTitle": "For designers & brands",
+    "eventsTitle": "Events",
+    "requestTitle": "Concierge request"
+  }
+}
+
