@@ -25,7 +25,11 @@ jobs:
           node-version: 20
           cache: npm
 
-      - run: npm ci
+      # `npm ci` strictly follows the lockfile. Our `package-lock.json` was created
+      # on macOS and doesn't include Linux-specific optional binaries
+      # (e.g. `@parcel/watcher-linux-x64-glibc`), which are required on ubuntu-latest.
+      # `npm install` will resolve/install the correct optional dependency for the runner OS.
+      - run: npm install --no-audit --no-fund
       - run: npm run build
 
       - uses: actions/upload-pages-artifact@v3
