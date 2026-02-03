@@ -7,11 +7,9 @@ const nextConfig: NextConfig = {
   assetPrefix: "/nkn/",
   trailingSlash: true,
   images: { unoptimized: true },
-  // Ensure Turbopack resolves the project root correctly even when there are
-  // other lockfiles higher up the filesystem (e.g. /Users/.../package-lock.json).
-  turbopack: {
-    root: process.cwd(),
-  },
+  // Prevent Turbopack from inferring an incorrect workspace root when multiple lockfiles exist
+  // (e.g. ~/package-lock.json), which can cause permission errors while scanning parent dirs.
+  turbopack: { root: process.cwd() },
 };
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 export default withNextIntl(nextConfig);

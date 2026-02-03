@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import {
-  getMessages,
-  getTranslations,
-  setRequestLocale,
-} from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { getSiteUrl } from "@/lib/siteUrl";
@@ -23,6 +19,9 @@ export async function generateMetadata({
   const safeLocale = routing.locales.includes(locale as Locale)
     ? (locale as Locale)
     : routing.defaultLocale;
+
+  // Required for static export: avoids `headers()` usage in next-intl request config.
+  setRequestLocale(safeLocale);
 
   const t = await getTranslations({ locale: safeLocale, namespace: "meta" });
   const base = getSiteUrl();
@@ -68,11 +67,10 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  // Required for `output: "export"` so next-intl doesn't fall back to `headers()`
-  // (dynamic rendering), which breaks static export.
-  setRequestLocale(locale);
+  // Required for static export: avoids `headers()` usage in next-intl request config.
+  setRequestLocale(locale as Locale);
 
-  const messages = await getMessages();
+  const messages = await getMessages({ locale });
 
   return (
     <NextIntlClientProvider messages={messages}>

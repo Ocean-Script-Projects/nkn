@@ -8,7 +8,7 @@ export default async function EventsPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations("nav");
+  const t = await getTranslations({ locale, namespace: "nav" });
   return (
     <PageShell title={t("events")}>
       <p className="max-w-2xl text-sm leading-7 text-black/70">
