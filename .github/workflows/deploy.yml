@@ -34,6 +34,12 @@ jobs:
           echo "npm version: $(npm -v)"
           echo "npm config omit: $(npm config get omit || true)"
           NPM_CONFIG_OMIT= npm install --include=optional --no-audit --no-fund
+
+      - name: Ensure @parcel/watcher works on Linux (Turbopack dependency)
+        run: |
+          node -p "process.platform + ' ' + process.arch"
+          node -e "try{require('@parcel/watcher'); console.log('watcher:ok')}catch(e){console.error('watcher:fail'); console.error(e?.message||e); process.exit(1)}" \
+          || npm install --no-audit --no-fund --no-save @parcel/watcher-linux-x64-glibc@2.5.6
       - run: npm run build
 
       - uses: actions/upload-pages-artifact@v3
