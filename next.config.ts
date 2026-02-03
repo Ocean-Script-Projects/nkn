@@ -6,7 +6,10 @@ const nextConfig: NextConfig = {
   basePath: "/nkn",
   assetPrefix: "/nkn/",
   trailingSlash: true,
-  images: { unoptimized: true }
+  images: { unoptimized: true },
+  // Skip API routes during static export (they won't work anyway)
+  skipTrailingSlashRedirect: true,
 };
+
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 export default withNextIntl(nextConfig);

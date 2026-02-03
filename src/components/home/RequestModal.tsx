@@ -138,21 +138,38 @@ export function RequestModal({
               };
 
               try {
-                const res = await fetch("/api/request", {
+                // For static export (GitHub Pages), use external API endpoint
+                // Set NEXT_PUBLIC_API_URL environment variable or use default
+                const apiUrl =
+                  process.env.NEXT_PUBLIC_API_URL || "/api/request";
+                
+                const res = await fetch(apiUrl, {
                   method: "POST",
                   headers: { "content-type": "application/json" },
                   body: JSON.stringify(payload),
                 });
 
                 if (!res.ok) {
+                  // If API is not available (static export), show alternative message
+                  if (res.status === 404 || res.status === 0) {
+                    setError(
+                      "API endpoint not available. Please contact directly via Telegram or email."
+                    );
+                    setSubmitting(false);
+                    return;
+                  }
                   setError("Could not send. Please try again in a minute.");
                   setSubmitting(false);
                   return;
                 }
 
                 setSent(true);
-              } catch {
-                setError("Network error. Please try again.");
+              } catch (err) {
+                // Network error or CORS issue - likely static export without API
+                console.error("Request failed:", err);
+                setError(
+                  "API endpoint not available. Please contact directly via Telegram or email."
+                );
               } finally {
                 setSubmitting(false);
               }

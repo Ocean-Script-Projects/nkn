@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found</title>
+  <script>
+    // GitHub Pages 404 handler for Next.js with basePath
+    (function() {
+      const basePath = '/nkn';
+      const defaultLocale = 'de';
+      const locales = ['de', 'ru', 'en'];
+      
+      // Get current path without basePath
+      let path = window.location.pathname;
+      if (path.startsWith(basePath)) {
+        path = path.slice(basePath.length);
+      }
+      
+      // Remove leading/trailing slashes
+      path = path.replace(/^\/+|\/+$/g, '');
+      
+      // Check if path already has a locale
+      const pathParts = path.split('/');
+      const firstPart = pathParts[0];
+      const hasLocale = locales.includes(firstPart);
+      
+      // If no locale, redirect to default locale
+      if (!hasLocale && path) {
+        window.location.replace(basePath + '/' + defaultLocale + '/' + path);
+        return;
+      }
+      
+      // If empty path, redirect to default locale
+      if (!path) {
+        window.location.replace(basePath + '/' + defaultLocale + '/');
+        return;
+      }
+      
+      // If path has locale but page doesn't exist, try to find similar page
+      // For now, just redirect to home with locale
+      if (hasLocale) {
+        window.location.replace(basePath + '/' + firstPart + '/');
+        return;
+      }
+      
+      // Fallback: redirect to default locale home
+      window.location.replace(basePath + '/' + defaultLocale + '/');
+    })();
+  </script>
+</head>
+<body>
+  <div style="display: flex; align-items: center; justify-content: center; height: 100vh; font-family: system-ui, sans-serif;">
+    <div style="text-align: center;">
+      <h1>404</h1>
+      <p>Page not found. Redirecting...</p>
+    </div>
+  </div>
+</body>
+</html>
