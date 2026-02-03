@@ -1,15 +1,23 @@
 import type { NextConfig } from "next";
-
 import createNextIntlPlugin from "next-intl/plugin";
 
+const repo = 'nkn'; 
+const isGithubPages = !!repo; 
+
 const nextConfig: NextConfig = {
+  output: "export",
+
+  basePath: isGithubPages ? `/${repo}` : undefined,
+  assetPrefix: isGithubPages ? `/${repo}/` : undefined,
+
+  trailingSlash: true,
+
+  images: { unoptimized: true },
+
   turbopack: {
-    // Avoid Turbopack inferring an incorrect repo root when multiple lockfiles
-    // exist elsewhere on the machine (can trigger permission errors).
     root: process.cwd(),
   },
 };
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
-
 export default withNextIntl(nextConfig);
