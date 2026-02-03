@@ -25,16 +25,15 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Ensure optionalDependencies are installed (required for @parcel/watcher on Linux)
-        run: |
-          npm config set optional true
-          npm config delete omit || true
-
       # `npm ci` strictly follows the lockfile. Our `package-lock.json` was created
       # on macOS and doesn't include Linux-specific optional binaries
       # (e.g. `@parcel/watcher-linux-x64-glibc`), which are required on ubuntu-latest.
       # `npm install` will resolve/install the correct optional dependency for the runner OS.
-      - run: npm install --include=optional --no-audit --no-fund
+      - name: Install deps (including optional binaries for Linux)
+        run: |
+          echo "npm version: $(npm -v)"
+          echo "npm config omit: $(npm config get omit || true)"
+          NPM_CONFIG_OMIT= npm install --include=optional --no-audit --no-fund
       - run: npm run build
 
       - uses: actions/upload-pages-artifact@v3
