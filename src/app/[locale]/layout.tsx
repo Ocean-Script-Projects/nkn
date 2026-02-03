@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import {
+  getMessages,
+  getTranslations,
+  setRequestLocale,
+} from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { getSiteUrl } from "@/lib/siteUrl";
 import { JsonLd } from "@/components/seo/JsonLd";
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export async function generateMetadata({
   params,
@@ -59,6 +67,10 @@ export default async function LocaleLayout({
   if (!routing.locales.includes(locale as Locale)) {
     notFound();
   }
+
+  // Required for `output: "export"` so next-intl doesn't fall back to `headers()`
+  // (dynamic rendering), which breaks static export.
+  setRequestLocale(locale);
 
   const messages = await getMessages();
 

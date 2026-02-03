@@ -1,7 +1,13 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageShell } from "@/components/site/PageShell";
 
-export default async function UpcyclingPage() {
+export default async function UpcyclingPage({
+  params,
+}: {
+  params: Promise<{ locale: string }> | { locale: string };
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations("nav");
   return (
     <PageShell title={t("upcycling")}>
