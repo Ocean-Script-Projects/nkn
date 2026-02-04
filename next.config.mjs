@@ -2,7 +2,7 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Убрали output: "export" так как используется middleware и деплой на Heroku
+  output: "export",
   basePath: "/nkn",
   assetPrefix: "/nkn/",
   trailingSlash: true,
