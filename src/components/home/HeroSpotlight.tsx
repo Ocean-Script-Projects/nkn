@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { WordReveal } from "@/components/ui/WordReveal";
+import { getAssetPath, getAssetUrl } from "@/lib/assets";
 
 function usePrefersReducedMotion() {
   const [reduced, setReduced] = React.useState(false);
@@ -157,7 +158,7 @@ export function HeroSpotlight({
         aria-hidden
         className="pointer-events-none absolute -inset-8 opacity-[0.06] mix-blend-multiply"
         style={{
-          backgroundImage: "url(/placeholder/grain.svg)",
+          backgroundImage: getAssetUrl("/placeholder/grain.svg"),
           backgroundSize: "240px 240px",
           animation: reducedMotion ? undefined : "heroGrain 7.5s steps(10) infinite",
         }}
@@ -276,7 +277,7 @@ export function HeroSpotlight({
             >
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-[color:var(--border)] bg-black/5">
                 <Image
-                  src="/placeholder/portrait.svg"
+                  src={getAssetPath("/placeholder/portrait.svg")}
                   alt="Editorial portrait placeholder"
                   fill
                   priority
@@ -302,7 +303,7 @@ export function HeroSpotlight({
                 >
                   <div className="absolute inset-0">
                     <Image
-                      src="/placeholder/macro.svg"
+                      src={getAssetPath("/placeholder/macro.svg")}
                       alt="Spotlight macro placeholder"
                       fill
                       className={[
@@ -313,7 +314,7 @@ export function HeroSpotlight({
                       sizes="(min-width: 1024px) 560px, 100vw"
                     />
                     <Image
-                      src="/placeholder/piece.svg"
+                      src={getAssetPath("/placeholder/piece.svg")}
                       alt="Spotlight piece placeholder"
                       fill
                       className={[

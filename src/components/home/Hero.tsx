@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { WordReveal } from "@/components/ui/WordReveal";
+import { getAssetPath, getAssetUrl } from "@/lib/assets";
 
 const HeroClothScene = dynamic(
   () => import("./HeroClothScene").then((m) => m.HeroClothScene),
@@ -128,7 +129,7 @@ export function Hero({
         aria-hidden
         className="pointer-events-none absolute -inset-8 opacity-[0.06] mix-blend-multiply"
         style={{
-          backgroundImage: "url(/placeholder/grain.svg)",
+          backgroundImage: getAssetUrl("/placeholder/grain.svg"),
           backgroundSize: "240px 240px",
           animation: reduced ? undefined : "heroGrain 7.5s steps(10) infinite",
         }}
@@ -226,7 +227,7 @@ export function Hero({
                 <div className="absolute inset-0 p-5 sm:p-6">
                   <div className="relative h-full w-full overflow-hidden rounded-2xl border border-white/25 shadow-2xl shadow-black/15">
                     <Image
-                      src="/placeholder/portrait-atelier.jpg"
+                      src={getAssetPath("/placeholder/portrait-atelier.jpg")}
                       alt="Portrait placeholder"
                       fill
                       className="object-cover"

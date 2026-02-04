@@ -4,6 +4,7 @@ import * as React from "react";
 import Image from "next/image";
 import { Section } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
+import { getAssetPath } from "@/lib/assets";
 
 export function Manifesto({
   id,
@@ -51,7 +52,7 @@ export function Manifesto({
           <div className="mt-10 overflow-hidden rounded-3xl border border-black/10 bg-black/5">
             <div className="relative aspect-[4/3]">
               <Image
-                src="/placeholder/macro.svg"
+                src={getAssetPath("/placeholder/macro.svg")}
                 alt="Manifesto media placeholder"
                 fill
                 className="object-cover"
@@ -192,7 +193,7 @@ export function Upcycling({ id, title }: { id: string; title: string }) {
         <div className="rounded-3xl border border-black/10 bg-white/35 p-4 backdrop-blur-sm">
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-black/5">
             <Image
-              src="/placeholder/piece.svg"
+              src={getAssetPath("/placeholder/piece.svg")}
               alt="Before placeholder"
               fill
               className="object-cover"
@@ -204,7 +205,7 @@ export function Upcycling({ id, title }: { id: string; title: string }) {
               style={{ width: `${pos}%` }}
             >
               <Image
-                src="/placeholder/portrait.svg"
+                src={getAssetPath("/placeholder/portrait.svg")}
                 alt="After placeholder"
                 fill
                 className="object-cover"
@@ -242,7 +243,7 @@ export function Prints({ id, title }: { id: string; title: string }) {
         <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-black/5">
           <div className="relative aspect-[4/3]">
             <Image
-              src="/placeholder/macro.svg"
+              src={getAssetPath("/placeholder/macro.svg")}
               alt="Print placeholder"
               fill
               className="object-cover"

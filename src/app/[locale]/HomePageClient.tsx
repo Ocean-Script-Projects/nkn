@@ -17,6 +17,7 @@ import {
   Events,
 } from "@/components/home/sections/HomeClientSections";
 import { Reveal } from "@/components/ui/Reveal";
+import { getAssetPath } from "@/lib/assets";
 
 export default function HomePageClient() {
   const t = useTranslations("home");
@@ -93,7 +94,7 @@ export default function HomePageClient() {
                     </div>
                     <div className="relative h-18 w-18 shrink-0 overflow-hidden rounded-2xl border border-[color:var(--border)] bg-black/5">
                       <Image
-                        src="/placeholder/macro.svg"
+                        src={getAssetPath("/placeholder/macro.svg")}
                         alt="Macro placeholder"
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-[1.05]"
@@ -139,7 +140,7 @@ export default function HomePageClient() {
               >
                 <div className="relative aspect-[4/5]">
                   <Image
-                    src="/placeholder/piece.svg"
+                    src={getAssetPath("/placeholder/piece.svg")}
                     alt="Piece placeholder"
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
